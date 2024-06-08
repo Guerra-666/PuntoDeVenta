@@ -22,9 +22,8 @@ Este repositorio contiene una aplicación de gestión de inventario desarrollada
 Para ejecutar esta aplicación, necesitas tener instalado:
 
 - [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- [MySQL](https://www.mysql.com/downloads/)
-- [Apache Tomcat (o cualquier otro servidor compatible con Servlets y JSP)](https://tomcat.apache.org/download-90.cgi)
-- [PHP](https://www.php.net/downloads.php)
+- [XAMMP](https://www.apachefriends.org/es/index.html)
+
 
 ### Instalación
 
@@ -35,45 +34,7 @@ Para ejecutar esta aplicación, necesitas tener instalado:
     cd gestion-de-inventario
     ```
 
-2. **Configura la base de datos MySQL:**
-
-    - Crea una base de datos en MySQL.
-    - Ejecuta los scripts SQL proporcionados en el directorio `db/` para crear las tablas necesarias.
-
-    ```sql
-    CREATE DATABASE inventario_db;
-    USE inventario_db;
-
-    CREATE TABLE productos (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(255) NOT NULL,
-        codigo_barras VARCHAR(255) NOT NULL,
-        categoria VARCHAR(255),
-        precio DECIMAL(10, 2),
-        cantidad INT
-    );
-
-    CREATE TABLE ventas (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        producto_id INT,
-        cantidad INT,
-        precio_venta DECIMAL(10, 2),
-        fecha DATE,
-        FOREIGN KEY (producto_id) REFERENCES productos(id)
-    );
-    ```
-
-3. **Configura el archivo de propiedades de la base de datos:**
-
-    Crea un archivo `database.properties` en el directorio `src/main/resources/` con el siguiente contenido:
-
-    ```properties
-    db.url=jdbc:mysql://localhost:3306/inventario_db
-    db.username=tu_usuario
-    db.password=tu_contraseña
-    ```
-
-4. **Compila y ejecuta la aplicación:**
+2. **Compila y ejecuta la aplicación:**
 
     Utiliza tu IDE preferido para abrir el proyecto y compilarlo, o ejecuta los siguientes comandos desde la terminal:
 
@@ -143,10 +104,8 @@ Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo [LICENSE](LI
     - Utilizar JDBC para interactuar con la base de datos.
 
 - **Integración con PHP:**
-    - Crear un servicio RESTful utilizando PHP para manejar las peticiones CRUD (Crear, Leer, Actualizar, Borrar).
-    - Configurar un servidor Apache o Nginx para servir las peticiones PHP.
+    - Crear un servicio REST utilizando PHP para manejar las peticiones CRUD (Crear, Leer, Actualizar, Borrar).
+    - Configurar un servidor Apache para servir las peticiones PHP.
     - Actualizar la aplicación Java para interactuar con los endpoints RESTful para realizar las operaciones necesarias.
 
 ---
-
-Esperamos que encuentres útil esta aplicación de gestión de inventario. Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue en el repositorio.
